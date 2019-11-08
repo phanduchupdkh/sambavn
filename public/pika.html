@@ -11,14 +11,12 @@
 	clear: both;
 	}
 	.col {
-	width : 50px;
-	height: 50px;
+	width : 9%;
 	float: left;
 	text-align: center;
 	}
 	img {
-	width : 46px;
-	height: 46px;
+	width : 90%;
 	display: inline;
 	padding: 2px 0;
 	}
@@ -30,13 +28,12 @@
 	border: 4px solid green;
 	padding: 0px;
 	}
-	.contai {
-	display: block;
-	width: 960px;
-	height: 550px;
-	background-image: url('https://taimienphi.vn/tmp/cf/aut/hinh-nen-dep-2.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
+	.pikachu {
+		display: block;
+		width: 100%;
+		background-image: url('https://taimienphi.vn/tmp/cf/aut/hinh-nen-dep-2.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
 	}
   </style>
 </head>
@@ -48,7 +45,7 @@
 	<button onclick='changeThemes("lienminh4")'>Lien Minh 4</button>
 	<button onclick='changeThemes("lienquan1")'>Lien Quan 1</button>
 	<button onclick='changeThemes("lienquan2")'>Lien Quan 2</button>
-    <div class="contai">
+    <div class="pikachu">
         <!-- <div class="row">
         <div class = "col 0s1"></div>
         </div> -->
@@ -68,9 +65,9 @@
 function createArrayStart() {
 	let obj ={}
 	let arr = []
-	for (let i = 0; i<11; i++) {
+	for (let i = 0; i<18; i++) {
 		let mediateArr = []
-		for (let j=0;j<18;j++){
+		for (let j=0;j<11;j++){
 			let hero
 			function createRandomHero() {
 				hero = parseInt(Math.random()*36+1)
@@ -81,7 +78,7 @@ function createArrayStart() {
 					}
 				} else {obj[hero] = 1}
 			}
-			if(i===0 || j===0 || i ===10 || j ===17){ 
+			if(i===0 || j===0 || i ===17 || j ===10){ 
 				hero = 0
 			} else {createRandomHero()}
 			
@@ -93,10 +90,10 @@ return arr
 }
  function showHero(arraySaveHero){
 	let strLage = "";
-	const contai = document.querySelector('.contai');
-	for (let i=0;i<11;i++){
+	const contai = document.querySelector('.pikachu');
+	for (let i=0;i<18;i++){
 		let strSmall = '';
-		for (let j=0;j<18;j++){
+		for (let j=0;j<11;j++){
 		   strSmall += `
 			<div class = "col">
 				<img id="${i+'_'+j}" onclick = "handleclick(this)" src="./themes/${displayInterface}/${arraySaveHero[i][j]}.png" /> 
@@ -111,7 +108,7 @@ function checkHero(iSta,jSta,iEnd,jEnd,arraySaveHero){
 	if(arraySaveHero[iSta][jSta] !== arraySaveHero[iEnd][jEnd]) return false
 	let arrToCheck = []
 	let count
-	for (i=0; i<11; i++){
+	for (i=0; i<18; i++){
 		// kiem tra canh 1 
 		count = 0
 		let c1End, c1Sta
@@ -135,7 +132,7 @@ function checkHero(iSta,jSta,iEnd,jEnd,arraySaveHero){
 		arrToCheck.push(count)
 	}
 	
-	for (j=0; j<18; j++){
+	for (j=0; j<11; j++){
 		// kiem tra canh 2
 		count = 0
 		let c1End, c1Sta
@@ -169,8 +166,8 @@ return false
 	function checkSuggestions () {
 		let suggestion1, suggestion2
 		let objC = {}
-		for (let i=1; i<11; i++){
-			for (let j = 1; j<18; j++){
+		for (let i=1; i<18; i++){
+			for (let j = 1; j<11; j++){
 				if(objC[arraySaveHero[i][j]]=== undefined ) { 
 					if(arraySaveHero[i][j]!==0){
 					objC[arraySaveHero[i][j]]=[[i,j]]
