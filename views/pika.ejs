@@ -11,12 +11,14 @@
 	clear: both;
 	}
 	.col {
-	width : 9%;
+	width : 50px;
+	height: 50px;
 	float: left;
 	text-align: center;
 	}
 	img {
-	width : 90%;
+	width : 46px;
+	height: 46px;
 	display: inline;
 	padding: 2px 0;
 	}
@@ -28,31 +30,40 @@
 	border: 4px solid green;
 	padding: 0px;
 	}
-	.pikachu {
-		display: block;
-		width: 100%;
-		background-image: url('https://taimienphi.vn/tmp/cf/aut/hinh-nen-dep-2.jpg');
-		background-repeat: no-repeat;
-		background-size: cover;
+	.contai {
+	display: block;
+	width: 960px;
+	height: 550px;
+	background-image: url('https://taimienphi.vn/tmp/cf/aut/hinh-nen-dep-2.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
 	}
   </style>
 </head>
 <body>
-	<button onclick='suggestions("sugges")'>suggestions</button>
-	<button onclick='changeThemes("lienminh1")'>Lien Minh 1</button>
-	<button onclick='changeThemes("lienminh2")'>Lien Minh 2</button>
-	<button onclick='changeThemes("lienminh3")'>Lien Minh 3</button>
-	<button onclick='changeThemes("lienminh4")'>Lien Minh 4</button>
-	<button onclick='changeThemes("lienquan1")'>Lien Quan 1</button>
-	<button onclick='changeThemes("lienquan2")'>Lien Quan 2</button>
-    <div class="pikachu">
-        <!-- <div class="row">
-        <div class = "col 0s1"></div>
-        </div> -->
-        
-    </div>
+	<strong>Chọn giao diện: </strong>
+	<select onchange='changeThemes(this)'>
+	  <option value="lienminh1">Lien Minh 1</option>
+	  <option value="lienminh2">Lien Minh 2</option>
+	  <option value="lienminh3">Lien Minh 3</option>
+	  <option value="lienminh4">Lien Minh 4</option>
+	  <option value="lienquan1">Lien Quan 1</option>
+	  <option value="lienquan2">Lien Quan 2</option>
+	</select>
+	<div>
+		<button onclick='suggestions("sugges")'>suggestions</button>
+	    <div class="contai">
+	        <!-- <div class="row">
+	        <div class = "col 0s1"></div>
+	        </div> -->
+	        
+	    </div>
+	</div>
+	
 
 <script>
+	const wiPika = <%=themes==='mobile' ? 9 : 16 %>
+	const hePika = <%=themes==='mobile' ? 16 : 9 %>
 	function clearHeroSugges () {
 	let clears = document.querySelectorAll('.heroSugges')
 	if (clears.length){
@@ -65,9 +76,9 @@
 function createArrayStart() {
 	let obj ={}
 	let arr = []
-	for (let i = 0; i<18; i++) {
+	for (let i = 0; i<hePika+2; i++) {
 		let mediateArr = []
-		for (let j=0;j<11;j++){
+		for (let j=0;j<wiPika+2;j++){
 			let hero
 			function createRandomHero() {
 				hero = parseInt(Math.random()*36+1)
@@ -78,7 +89,7 @@ function createArrayStart() {
 					}
 				} else {obj[hero] = 1}
 			}
-			if(i===0 || j===0 || i ===17 || j ===10){ 
+			if(i===0 || j===0 || i === hePika+1 || j === wiPika+1){ 
 				hero = 0
 			} else {createRandomHero()}
 			
@@ -90,10 +101,10 @@ return arr
 }
  function showHero(arraySaveHero){
 	let strLage = "";
-	const contai = document.querySelector('.pikachu');
-	for (let i=0;i<18;i++){
+	const contai = document.querySelector('.contai');
+	for (let i=0;i< hePika+2;i++){
 		let strSmall = '';
-		for (let j=0;j<11;j++){
+		for (let j=0;j< wiPika+2;j++){
 		   strSmall += `
 			<div class = "col">
 				<img id="${i+'_'+j}" onclick = "handleclick(this)" src="./themes/${displayInterface}/${arraySaveHero[i][j]}.png" /> 
@@ -108,7 +119,7 @@ function checkHero(iSta,jSta,iEnd,jEnd,arraySaveHero){
 	if(arraySaveHero[iSta][jSta] !== arraySaveHero[iEnd][jEnd]) return false
 	let arrToCheck = []
 	let count
-	for (i=0; i<18; i++){
+	for (i=0; i< hePika+2; i++){
 		// kiem tra canh 1 
 		count = 0
 		let c1End, c1Sta
@@ -132,7 +143,7 @@ function checkHero(iSta,jSta,iEnd,jEnd,arraySaveHero){
 		arrToCheck.push(count)
 	}
 	
-	for (j=0; j<11; j++){
+	for (j=0; j< wiPika+2; j++){
 		// kiem tra canh 2
 		count = 0
 		let c1End, c1Sta
@@ -160,14 +171,14 @@ return false
 	let displayInterface = 'lienminh1'
 	let arraySaveHero = createArrayStart()
 	function changeThemes(theme) {
-		displayInterface = theme
+		displayInterface = theme.value
 		showHero(arraySaveHero);
 	}
 	function checkSuggestions () {
 		let suggestion1, suggestion2
 		let objC = {}
-		for (let i=1; i<18; i++){
-			for (let j = 1; j<11; j++){
+		for (let i=1; i< hePika+2; i++){
+			for (let j = 1; j< wiPika+2; j++){
 				if(objC[arraySaveHero[i][j]]=== undefined ) { 
 					if(arraySaveHero[i][j]!==0){
 					objC[arraySaveHero[i][j]]=[[i,j]]
@@ -228,6 +239,7 @@ return false
 		} else {
 			if(choseStart===img){
 				img.classList.remove('isHeroChose')
+				choseStart=''
 			} else {
 				choseEnd = img
 				const [iSta,jSta] = choseStart.id.split('_').map(item=>parseInt(item))

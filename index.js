@@ -7,8 +7,13 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsi
 
 app.use(express.static('public'));
+app.set('view engine', 'ejs');
+app.set('views', './views');
 
 app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/pikamobile', (req, res) => res.render('pika', { themes: 'mobile'}));
+app.get('/pikabrowser', (req, res) => res.render('pika', { themes: 'browser'}));
+ 
 
 app.listen(process.env.PORT || 3001, function() {
 	console.log('Server listening on port ');
