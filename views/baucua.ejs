@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The grid</title>
+  <style>
+	.row {
+		position: relative;
+		margin: 0 auto;
+		clear: both;
+	}
+	.col {
+		width : 50px;
+		height: 50px;
+		float: left;
+		text-align: center;
+	}
+	.head img {
+		margin: 20px;
+		width : 30vw;
+		height: 30vw;
+		display: flex;
+		padding: 2px 0;
+		border: 2px solid;
+		border-radius: 25px;
+	}
+	
+	.contai {
+		display: block;
+		width: 100vw;
+		height: 100vh;
+		background-image: url('./baucua/hinhnen.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	.head {
+		display: flex;
+	}
+	.headend {
+		margin-bottom: 100px;
+	}
+	.batdia {
+		background-image: url('./baucua/batdia/dia.png');
+		background-size: cover;
+		background-repeat: no-repeat;
+		margin: 0 auto;
+		padding: 2vw;
+		width : 50vw;
+		height: 50vw;
+
+	}
+	.batdia img {
+		margin-left: 10px;
+		width : 50vw;
+		height: 50vw;
+	}
+  </style>
+</head>
+<body>
+	<div class="contai">
+		<div class="head">
+			<img class="linhvat" src="./baucua/linhvat/tom.jpg"/>
+			<img class="linhvat" src="./baucua/linhvat/bau.jpg"/>
+			<img class="linhvat" src="./baucua/linhvat/cua.jpg"/>
+		</div>
+		<div class="head headend">
+			<img class="linhvat" src="./baucua/linhvat/ca.jpg"/>
+			<img class="linhvat" src="./baucua/linhvat/nai.jpg"/>
+			<img class="linhvat" src="./baucua/linhvat/ga.jpg"/>
+		</div>
+
+		<div class="batdia">
+			<!-- <img class="bat" src="./baucua/batdia/bat.png"/> -->
+		</div>
+
+	</div>
+</body>
+</html>
