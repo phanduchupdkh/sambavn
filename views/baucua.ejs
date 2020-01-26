@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>The grid</title>
+  <title>Bầu Cua Tôm Cá</title>
   <style>
 	.row {
 		position: relative;
@@ -50,10 +50,24 @@
 		height: 50vw;
 
 	}
-	.batdia img {
-		margin-left: 10px;
+	#bat-xoc img {
 		width : 50vw;
 		height: 50vw;
+	}
+	#linhvatxoc {
+		margin-left: 8vw;
+		margin-top: 10vw;
+	}
+	#linhvatxoc img {
+		margin-left: 10px;
+		width : 15vw;
+		height: 15vw;
+		border: 2px solid red;
+		border-radius: 25px;
+		
+	}
+	.hidden-bat {
+		display: none
 	}
   </style>
 </head>
@@ -70,10 +84,45 @@
 			<img class="linhvat" src="./baucua/linhvat/ga.jpg"/>
 		</div>
 
-		<div class="batdia">
-			<!-- <img class="bat" src="./baucua/batdia/bat.png"/> -->
+		<div class="batdia" onclick="xocOrHidden()">
+			<div id='bat-xoc'>
+				<img class="bat"  src="./baucua/batdia/bat.png"/>
+			</div>
+
+			<div id='linhvatxoc'>
+			</div>
 		</div>
 
 	</div>
+	<script type="text/javascript">
+		let batXoc = document.getElementById('bat-xoc')
+		let linhvatxoc = document.getElementById('linhvatxoc')
+		let state = 1
+		let linVat =  ['bau','cua','tom','ca','ga','nai']
+		
+		function xocOrHidden() {
+			if (state) {
+				batXoc.classList.add('hidden-bat')
+				linhvatxoc.classList.remove('hidden-bat')
+				state = 0
+				let lvXocs = [
+					parseInt(Math.random()*6),
+					parseInt(Math.random()*6),
+					parseInt(Math.random()*6)
+				]
+				linhvatxoc.innerHTML = `
+				<img class="linhvat" src="./baucua/linhvat/${linVat[lvXocs[0]]}.jpg"/>
+				<img class="linhvat" src="./baucua/linhvat/${linVat[lvXocs[1]]}.jpg"/>
+				<img class="linhvat" src="./baucua/linhvat/${linVat[lvXocs[2]]}.jpg"/>`
+			} else {
+				batXoc.classList.remove('hidden-bat')
+				linhvatxoc.classList.add('hidden-bat')
+				linhvatxoc.innerHTML =''
+				state = 1
+			}
+
+			
+		}
+	</script>
 </body>
 </html>
