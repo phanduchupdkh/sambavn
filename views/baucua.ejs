@@ -45,29 +45,37 @@
 		background-size: cover;
 		background-repeat: no-repeat;
 		margin: 0 auto;
-		padding: 2vw;
-		width : 50vw;
-		height: 50vw;
+		padding: 1vw;
+		width : 90vw;
+		height: 90vw;
 
 	}
 	#bat-xoc img {
-		width : 50vw;
-		height: 50vw;
+		width : 85vw;
+		height: 85vw;
+		margin-top: 2vw;
+		margin-left: 2vw;
 	}
 	#linhvatxoc {
-		margin-left: 8vw;
-		margin-top: 10vw;
+		margin-left: 20vw;
+		margin-top: 20vw;
 	}
 	#linhvatxoc img {
 		margin-left: 10px;
-		width : 15vw;
-		height: 15vw;
+		width : 27vw;
+		height: 27vw;
 		border: 2px solid red;
 		border-radius: 25px;
 		
 	}
 	.hidden-bat {
 		display: none
+	}
+	.year {
+		position: fixed;
+  		margin: 0 auto;
+  		width: 50px;
+  		bottom: 0;
 	}
   </style>
 </head>
@@ -86,10 +94,13 @@
 
 		<div class="batdia" onclick="xocOrHidden()">
 			<div id='bat-xoc'>
-				<img class="bat"  src="./baucua/batdia/bat.png"/>
+				<img class="bat"  src="./baucua/batdia/bat1.png"/>
 			</div>
 
 			<div id='linhvatxoc'>
+			</div>
+			<div class="year">
+				<img src="./baucua/2020.png"/>
 			</div>
 		</div>
 
@@ -99,6 +110,7 @@
 		let linhvatxoc = document.getElementById('linhvatxoc')
 		let state = 1
 		let linVat =  ['bau','cua','tom','ca','ga','nai']
+		linhvatxoc.classList.add('hidden-bat')
 		
 		function xocOrHidden() {
 			if (state) {
