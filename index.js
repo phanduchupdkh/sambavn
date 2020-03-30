@@ -18,6 +18,7 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 app.get('/', (req, res) => res.render('baucua', { themes: 'mobile' }))
+app.get('/paste', (req, res) => res.render('paste'))
 app.get('/datcom', (req, res) => {
 	// login
 	fetch("https://portal.acexis.com/graphqllunch",
