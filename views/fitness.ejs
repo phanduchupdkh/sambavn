@@ -66,13 +66,16 @@
         else {
           count++
           console.log(count)
-          exercise.innerHTML = bt[Math.floor(count / 60)].name
-          exImage.innerHTML = `<img width='60%' src=${bt[Math.floor(count / 60)].link} />`
+
           if (count % 60 >= 60 - cheDo) {
+            exImage.innerHTML = `<p>Bài tiếp theo</p><img width='60%' src=${bt[Math.floor(count / 60) + 1].link} />`
+            exercise.innerHTML = bt[Math.floor(count / 60) + 1].name
             time.classList.add('rest')
             time.classList.remove('practice')
             time.innerHTML = 60 - count % 60
           } else {
+            exImage.innerHTML = `<img width='60%' src=${bt[Math.floor(count / 60)].link} />`
+            exercise.innerHTML = bt[Math.floor(count / 60)].name
             time.classList.add('practice')
             time.classList.remove('rest')
             time.innerHTML = 60 - count % 60 - cheDo
