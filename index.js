@@ -18,6 +18,15 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 app.get('/', (req, res) => res.render('baucua', { themes: 'mobile' }))
+
+app.get('/myip', (req, res) => {
+	var ip = req.headers['x-forwarded-for'] || 
+     req.connection.remoteAddress || 
+     req.socket.remoteAddress ||
+     (req.connection.socket ? req.connection.socket.remoteAddress : null);
+	res.send(ip)
+})
+
 app.get('/paste', (req, res) => res.render('paste'))
 app.get('/fitness', (req, res) => res.render('fitness'))
 app.get('/datcom', (req, res) => {
