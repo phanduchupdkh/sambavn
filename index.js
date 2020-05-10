@@ -24,7 +24,8 @@ app.get('/myip', (req, res) => {
      req.connection.remoteAddress || 
      req.socket.remoteAddress ||
      (req.connection.socket ? req.connection.socket.remoteAddress : null);
-	res.send(ip)
+	
+	res.send(req)
 })
 
 app.get('/paste', (req, res) => res.render('paste'))
