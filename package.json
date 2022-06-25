@@ -16,6 +16,6 @@
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "messaging-api-telegram": "^0.8.2",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.7"
   }
 }
