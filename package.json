@@ -14,7 +14,7 @@
     "cross-fetch": "^3.0.4",
     "dotenv": "^8.2.0",
     "ejs": "^2.7.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "messaging-api-telegram": "^0.8.2",
     "node-fetch": "^2.6.0"
   }
